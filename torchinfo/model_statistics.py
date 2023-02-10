@@ -4,7 +4,6 @@ from typing import Any
 
 import humanize
 
-from .formatting import FormattingOptions
 from .enums import Units
 from .formatting import CONVERSION_FACTORS, FormattingOptions
 from .layer_info import LayerInfo
@@ -79,7 +78,9 @@ class ModelStatistics:
             input_size = self.total_input
             output_bytes = self.total_output_bytes
             param_bytes = self.total_param_bytes
-            total_bytes = self.total_input + self.total_output_bytes + self.total_param_bytes
+            total_bytes = (
+                self.total_input + self.total_output_bytes + self.total_param_bytes
+            )
             summary_str += (
                 f"Total mult-adds{humanize.intword(macs)}\n{divider}\n"
                 f"Input size: {humanize.naturalsize(input_size)}\n"
